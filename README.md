@@ -67,3 +67,33 @@ Save hours of complex network calculations and prevent power budget failures in 
 * 👉 **[Haz clic aquí para descargar la Suite de Ingeniería FTTH Pro en Español (App Web Offline + Excel Desbloqueado)](https://payhip.com/b/EZuf3)**
 
 **Incluye:** Cálculo de atenuación óptica en 1310nm/1490nm/1550nm, cascada de hasta 16 cajas NAP/CTO con acopladores asimétricos, cómputos métricos de materiales de planta externa (cable ADSS y herrajes) y buscador de código de colores TIA/EIA-598.
+
+---
+
+## 🔋 NEW: GPON Node Battery Backup & Power Supply Calculator (EN / ES)
+
+### 🌐 [English Version] GPON Node Battery Backup & Power Supply Calculator (Excel + App)
+Professional engineering toolkit designed for precise backup autonomy and battery bank sizing for outdoor plant enclosures, remote OLTs, and active FTTH telecom nodes[cite: 3].
+
+* **What is included:** Standalone Offline Web Application (`.html`), Protected Excel Calculation Spreadsheet (`.xlsx`), and Technical Guide (`README.txt`)[cite: 3].
+* **Key Calculations:**
+  * Total Required Energy ($Wh$) based on active power (W) and backup autonomy hours[cite: 1, 3].
+  * Dynamic Temperature Correction Factor for high ambient environments ($>25^\circ\text{C}$)[cite: 1, 3].
+  * Adjusted Gross Battery Capacity ($Ah$) factoring in Depth of Discharge ($DoD$) and Battery Aging/Degradation margins[cite: 1, 3].
+  * Commercial 48V / 24V / 12V DC battery bank sizing and series/parallel configuration.
+
+👉 **[Buy & Download English Version on Payhip](https://payhip.com/b/zVWy7)**
+
+---
+
+### 🌐 [Versión en Español] Calculadora de Baterías y Respaldo de Energía para Nodos GPON (Excel + App)
+Suite de ingeniería profesional diseñada para el cálculo preciso de autonomía de respaldo y dimensionamiento de bancos de baterías en gabinetes de planta externa, OLTs remotas y nodos activos de telecomunicaciones FTTH/GPON[cite: 5].
+
+* **Qué incluye:** Aplicación Web Offline (`.html`), Planilla de Cálculo Profesional en Excel (`.xlsx`) y Guía de Instrucciones (`LEEME.txt`)[cite: 5].
+* **Cálculos Principales:**
+  * Energía Total Requerida ($Wh$) según consumo en Vatios (W) y horas de autonomía requeridas[cite: 5, 6].
+  * Factor de corrección térmica dinámico para climas cálidos ($>25^\circ\text{C}$)[cite: 5].
+  * Capacidad Bruta Ajustada ($Ah$) considerando Profundidad de Descarga ($DoD$) y Margen de Envejecimiento/Degradación[cite: 5, 6].
+  * Dimensionamiento comercial del banco de baterías y configuración sugerida en bloques de 12V[cite: 6].
+
+👉 **[Comprar y Descargar Versión en Español en Payhip](https://payhip.com/b/JSa7i)**
