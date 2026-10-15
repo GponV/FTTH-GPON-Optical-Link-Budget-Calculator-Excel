@@ -97,3 +97,31 @@ Suite de ingeniería profesional diseñada para el cálculo preciso de autonomí
   * Dimensionamiento comercial del banco de baterías y configuración sugerida en bloques de 12V[cite: 6].
 
 👉 **[Comprar y Descargar Versión en Español en Payhip](https://payhip.com/b/JSa7i)**
+
+---
+
+## ⚡ NEW: OSP Telecom Voltage Drop & Cable Gauge Calculator - AC/DC (EN / ES)
+
+### 🌐 [English Version] OSP Telecom Voltage Drop & Cable Gauge Calculator (Excel + App)
+Professional engineering toolkit providing instant, accurate conductor sizing (AWG & $\text{mm}^2$) and voltage drop calculations for outside plant (OSP) telecom enclosures, remote OLTs, and aerial/underground DC or AC power feeders[cite: 8].
+
+* **What is included:** Standalone Offline Web Application (`.html`), Automated Excel Calculation Workbook (`.xlsx`), and Technical Guide (`README_Voltage_Drop.txt`)[cite: 8].
+* **Key Calculations:**
+  * Operating Line Current ($I$) based on active power (W), source voltage (V), and power factor ($\cos \phi$)[cite: 8, 9].
+  * Theoretical Minimum Cross-Section ($S_{\text{min}}$) and Commercial AWG Gauge (`14 AWG` to `1/0 AWG`) for Copper and Aluminum conductors[cite: 8, 9].
+  * Actual Voltage Drop ($\Delta V$ in Volts and %), Effective Voltage Delivered at the Telecom Node, and Cable Power Loss ($I^2R$ in Watts)[cite: 9].
+
+👉 **[Buy & Download English Version on Payhip](https://payhip.com/b/VoqM9)**
+
+---
+
+### 🌐 [Versión en Español] Calculadora de Caída de Tensión y Calibre de Cable en Planta Externa AC/DC (Excel + App)
+Suite de ingeniería profesional que proporciona el dimensionamiento exacto de conductores eléctricos (AWG y $\text{mm}^2$) y el cálculo de pérdida de voltaje para acometidas aéreas o subterráneas que alimentan OLTs remotas, nodos ópticos y gabinetes FTTH/GPON[cite: 11].
+
+* **Qué incluye:** Aplicación Web Offline (`.html`), Planilla de Cálculo Profesional en Excel (`.xlsx`) y Guía de Instrucciones (`LEEME_Caida_Tension.txt`)[cite: 11].
+* **Cálculos Principales:**
+  * Corriente de Operación de la Línea ($I$) según potencia activa (W), voltaje nominal (V) y factor de potencia ($\cos \phi$)[cite: 11, 12].
+  * Sección Transversal Mínima Teórica ($S_{\text{mín}}$) y Calibre Comercial Recomendado (`14 AWG` a `1/0 AWG`) para Cobre y Aluminio[cite: 11, 12].
+  * Caída de Tensión Real ($\Delta V$ en Voltios y %), Voltaje Efectivo Entregado en el Nodo/Gabinete y Pérdida de Potencia Disipada en el Cable ($I^2R$ en Vatios)[cite: 12].
+
+👉 **[Comprar y Descargar Versión en Español en Payhip](https://payhip.com/b/eH2za)**
