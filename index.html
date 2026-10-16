@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecom Engineering Tools - Catálogo FTTH / GPON & Planta Externa</title>
+    <title>Telecom Engineering Tools - FTTH / GPON & OSP Catalog</title>
     <style>
         :root {
             --primary: #1F4E78;
@@ -23,17 +23,22 @@
         .card h2 { color: var(--primary); font-size: 19px; margin-bottom: 12px; }
         .card p { font-size: 14px; color: #444; margin-bottom: 15px; }
         .btn-container { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px; }
-        .btn { background-color: var(--primary); color: #FFF; padding: 10px 18px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 13.5px; transition: background 0.2s; }
+        .btn { background-color: var(--primary); color: #FFF; padding: 10px 18px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 13.5px; transition: background 0.2s; display: inline-block; }
         .btn:hover { background-color: var(--accent); }
         .btn-alt { background-color: #2E75B6; }
         
-        /* Estilos de la Mini-Calculadora Interactiva */
+        /* Estilos de la Mini-Calculadora Bilingüe */
         .calc-box { border: 2px solid var(--primary); border-radius: 8px; padding: 25px; margin: 30px 0; background-color: #FFFFFF; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .lang-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .lang-btn { background: #e0e0e0; border: none; padding: 6px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; }
+        .lang-btn.active { background: var(--primary); color: white; }
         .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
         .calc-field label { font-size: 12px; font-weight: bold; display: block; margin-bottom: 5px; color: #333; }
         .calc-field input { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; text-align: right; font-size: 14px; }
         .calc-result { padding: 8px; background: #E2EFDA; color: #375623; font-weight: bold; border-radius: 4px; text-align: center; font-size: 14px; }
-        
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
         footer { text-align: center; padding: 25px; font-size: 12px; color: #666; border-top: 1px solid #ddd; margin-top: 40px; }
     </style>
 </head>
@@ -41,80 +46,142 @@
 
 <div class="container">
     <header>
-        <h1>Telecom Engineering Tools — Catálogo Técnico FTTH / GPON</h1>
-        <p>Herramientas profesionales en formato dual (Excel protegido + Aplicación Web Offline) para ingenieros de redes y planta externa.</p>
+        <h1>Telecom Engineering Tools — FTTH / GPON & OSP Catalog</h1>
+        <p>Professional engineering suites in dual format (Protected Excel + Offline Web App) for optical network and outside plant designers.</p>
     </header>
 
-    <!-- MINI-CALCULADORA INTERACTIVA DE PRUEBA -->
+    <!-- MINI-CALCULADORA INTERACTIVA BILINGÜE -->
     <div class="calc-box">
-        <h3 style="color: var(--primary); margin-top: 0; font-size: 18px;">⚡ OSP Voltage Drop Quick Calculator (Demo Online Gratis)</h3>
-        <p style="font-size: 13.5px; color: #555; margin-bottom: 15px;">Prueba una versión ligera de nuestra calculadora de planta externa directamente en tu navegador:</p>
-        
-        <div class="calc-grid">
-            <div class="calc-field">
-                <label for="gh_volt">Voltaje (V DC/AC):</label>
-                <input type="number" id="gh_volt" value="48" oninput="runGhCalc()">
+        <div class="lang-tabs">
+            <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+            <button class="lang-btn" onclick="switchLang('es')">🇪🇸 Español</button>
+        </div>
+
+        <!-- Versión en Inglés -->
+        <div id="content-en" class="lang-content active">
+            <h3 style="color: var(--primary); margin-top: 0; font-size: 18px;">⚡ OSP Voltage Drop Quick Calculator (Free Online Demo)</h3>
+            <p style="font-size: 13.5px; color: #555; margin-bottom: 15px;">Test a lightweight version of our outside plant electrical calculator directly in your browser:</p>
+            
+            <div class="calc-grid">
+                <div class="calc-field">
+                    <label>Voltage (V DC/AC):</label>
+                    <input type="number" id="en_volt" value="48" oninput="runCalc()">
+                </div>
+                <div class="calc-field">
+                    <label>Active Power (Watts):</label>
+                    <input type="number" id="en_power" value="300" oninput="runCalc()">
+                </div>
+                <div class="calc-field">
+                    <label>One-Way Distance (m):</label>
+                    <input type="number" id="en_dist" value="85" oninput="runCalc()">
+                </div>
+                <div class="calc-field">
+                    <label>Suggested Wire Gauge (AWG):</label>
+                    <div id="res_awg_en" class="calc-result">12 AWG (3.31 mm²)</div>
+                </div>
             </div>
-            <div class="calc-field">
-                <label for="gh_power">Potencia Activa (Watts):</label>
-                <input type="number" id="gh_power" value="300" oninput="runGhCalc()">
-            </div>
-            <div class="calc-field">
-                <label for="gh_dist">Distancia Unidireccional (m):</label>
-                <input type="number" id="gh_dist" value="85" oninput="runGhCalc()">
-            </div>
-            <div class="calc-field">
-                <label>Calibre Sugerido (AWG):</label>
-                <div id="gh_res_awg" class="calc-result">12 AWG (3.31 mm²)</div>
+
+            <div style="text-align: center; padding-top: 15px; border-top: 1px solid #eee;">
+                <p style="font-size: 13px; color: #333; margin-bottom: 10px;">Need the full Excel formal report, thermal correction and offline app?</p>
+                <a href="https://payhip.com/b/VoqM9" target="_blank" rel="noopener" class="btn">🛒 Get English Voltage Drop Suite ($19)</a>
             </div>
         </div>
 
-        <div style="text-align: center; padding-top: 15px; border-top: 1px solid #eee;">
-            <p style="font-size: 13px; color: #333; margin-bottom: 10px;">¿Necesitas el reporte formal en Excel, corrección por temperatura y la app completa sin conexión?</p>
-            <a href="https://payhip.com/b/VoqM9" target="_blank" rel="noopener" class="btn">🛒 Obtener la Suite de Caída de Tensión en Payhip ($19)</a>
+        <!-- Versión en Español -->
+        <div id="content-es" class="lang-content">
+            <h3 style="color: var(--primary); margin-top: 0; font-size: 18px;">⚡ Calculadora Rápida de Caída de Tensión OSP (Demo Online Gratis)</h3>
+            <p style="font-size: 13.5px; color: #555; margin-bottom: 15px;">Prueba una versión ligera de nuestra calculadora eléctrica de planta externa directamente en tu navegador:</p>
+            
+            <div class="calc-grid">
+                <div class="calc-field">
+                    <label>Voltaje (V DC/AC):</label>
+                    <input type="number" id="es_volt" value="48" oninput="runCalc()">
+                </div>
+                <div class="calc-field">
+                    <label>Potencia Activa (Watts):</label>
+                    <input type="number" id="es_power" value="300" oninput="runCalc()">
+                </div>
+                <div class="calc-field">
+                    <label>Distancia Unidireccional (m):</label>
+                    <input type="number" id="es_dist" value="85" oninput="runCalc()">
+                </div>
+                <div class="calc-field">
+                    <label>Calibre Sugerido (AWG):</label>
+                    <div id="res_awg_es" class="calc-result">12 AWG (3.31 mm²)</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 15px; border-top: 1px solid #eee;">
+                <p style="font-size: 13px; color: #333; margin-bottom: 10px;">¿Necesitas el reporte formal en Excel, corrección por temperatura y la app completa?</p>
+                <a href="https://payhip.com/b/eH2za" target="_blank" rel="noopener" class="btn">🛒 Comprar Suite en Español ($19)</a>
+            </div>
         </div>
     </div>
 
-    <!-- TARJETA 1: Presupuesto Óptico -->
+    <!-- TARJETA 1 -->
     <div class="card">
         <h2>1. FTTH / GPON Optical Link Budget Calculator</h2>
         <p><strong>[EN/ES]</strong> Simulador avanzado de presupuesto de potencia óptica y cascada de splitters desbalanceados (FBT / Asymmetric Tap) para redes pasivas de fibra óptica.</p>
         <div class="btn-container">
-            <a href="https://payhip.com/b/zVWy7" target="_blank" rel="noopener" class="btn">🛒 Buy English Suite (Payhip)</a>
-            <a href="https://payhip.com/b/JSa7i" target="_blank" rel="noopener" class="btn btn-alt">🛒 Comprar Suite en Español (Payhip)</a>
+            <a href="https://payhip.com/b/zVWy7" target="_blank" rel="noopener" class="btn">🛒 Buy English Suite</a>
+            <a href="https://payhip.com/b/JSa7i" target="_blank" rel="noopener" class="btn btn-alt">🛒 Comprar Suite en Español</a>
         </div>
     </div>
 
-    <!-- TARJETA 2: Baterías y Respaldo -->
+    <!-- TARJETA 2 -->
     <div class="card">
         <h2>2. GPON Node Battery Backup & Autonomy Calculator</h2>
         <p><strong>[EN/ES]</strong> Dimensionamiento de bancos de baterías, cálculo de autonomía de respaldo ante apagones y compensación térmica para nodos ópticos y OLTs remotas.</p>
         <div class="btn-container">
-            <a href="https://payhip.com/b/zVWy7" target="_blank" rel="noopener" class="btn">🛒 Buy English Suite (Payhip)</a>
-            <a href="https://payhip.com/b/JSa7i" target="_blank" rel="noopener" class="btn btn-alt">🛒 Comprar Suite en Español (Payhip)</a>
+            <a href="https://payhip.com/b/zVWy7" target="_blank" rel="noopener" class="btn">🛒 Buy English Suite</a>
+            <a href="https://payhip.com/b/JSa7i" target="_blank" rel="noopener" class="btn btn-alt">🛒 Comprar Suite en Español</a>
         </div>
     </div>
 
-    <!-- TARJETA 3: Caída de Tensión -->
+    <!-- TARJETA 3 -->
     <div class="card">
         <h2>3. OSP Telecom Voltage Drop & Cable Gauge Calculator (AC/DC)</h2>
-        <p><strong>[EN/ES]</strong> Cálculo preciso de caída de voltaje, selección de calibres de conductores (Cobre/Aluminio) y pérdidas de potencia en línea ($I^2R$) para acometidas de planta externa.</p>
+        <p><strong>[EN/ES]</strong> Cálculo preciso de caída de voltaje, selección de calibres de conductores y pérdidas de potencia en línea ($I^2R$) para acometidas de planta externa.</p>
         <div class="btn-container">
-            <a href="https://payhip.com/b/VoqM9" target="_blank" rel="noopener" class="btn">🛒 Buy English Suite (Payhip)</a>
-            <a href="https://payhip.com/b/eH2za" target="_blank" rel="noopener" class="btn btn-alt">🛒 Comprar Suite en Español (Payhip)</a>
+            <a href="https://payhip.com/b/VoqM9" target="_blank" rel="noopener" class="btn">🛒 Buy English Suite</a>
+            <a href="https://payhip.com/b/eH2za" target="_blank" rel="noopener" class="btn btn-alt">🛒 Comprar Suite en Español</a>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Telecom Engineering Tools. Todos los derechos reservados. Diseñado para ingeniería de redes de alta confiabilidad.
+        &copy; 2026 Telecom Engineering Tools. Todos los derechos reservados. High-reliability network engineering solutions.
     </footer>
 </div>
 
 <script>
-function runGhCalc() {
-    const V = parseFloat(document.getElementById('gh_volt').value) || 48;
-    const P = parseFloat(document.getElementById('gh_power').value) || 0;
-    const L = parseFloat(document.getElementById('gh_dist').value) || 0;
+function switchLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+    
+    if(lang === 'en') {
+        document.querySelectorAll('.lang-btn')[0].classList.add('active');
+        document.getElementById('content-en').classList.add('active');
+    } else {
+        document.querySelectorAll('.lang-btn')[1].classList.add('active');
+        document.getElementById('content-es').classList.add('active');
+    }
+}
+
+function runCalc() {
+    // Sincronizar valores para que si cambian en uno, se reflejen matemáticamente igual
+    const isEnActive = document.getElementById('content-en').classList.contains('active');
+    const prefix = isEnActive ? 'en' : 'es';
+    const altPrefix = isEnActive ? 'es' : 'en';
+
+    const V = parseFloat(document.getElementById(prefix + '_volt').value) || 48;
+    const P = parseFloat(document.getElementById(prefix + '_power').value) || 0;
+    const L = parseFloat(document.getElementById(prefix + '_dist').value) || 0;
+
+    // Actualizar el otro idioma en segundo plano para mantener consistencia
+    document.getElementById(altPrefix + '_volt').value = V;
+    document.getElementById(altPrefix + '_power').value = P;
+    document.getElementById(altPrefix + '_dist').value = L;
+
     const I = V > 0 ? P / V : 0;
     const Smin = V > 0 ? (2 * L * I * 0.0172) / (V * 0.03) : 0;
     
@@ -126,7 +193,9 @@ function runGhCalc() {
     if (Smin > 8.37) { awg = "6 AWG"; mm2 = "13.30"; }
     if (Smin > 13.30) { awg = "4 AWG"; mm2 = "21.15"; }
     
-    document.getElementById('gh_res_awg').innerText = awg + " (" + mm2 + " mm²)";
+    const resultText = awg + " (" + mm2 + " mm²)";
+    document.getElementById('res_awg_en').innerText = resultText;
+    document.getElementById('res_awg_es').innerText = resultText;
 }
 </script>
 
